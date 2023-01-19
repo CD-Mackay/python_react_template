@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
+
 
 
 function App() {
@@ -14,18 +15,16 @@ function App() {
       url: '/profile',
     }).then((response) => {
       const res = response.data
-      setProfileData({
+      setProfileData(({
         profile_name: res.name,
-        about_me: res.about
+        about_me: res.about}))
       }).catch((error) => {
         if (error.response) {
           console.log(error.response)
           console.log(error.response.status)
           console.log(error.response.headers)
         }
-      })
-    })
-  }
+      })}
   return (
     <div className="App">
       <header className="App-header">
