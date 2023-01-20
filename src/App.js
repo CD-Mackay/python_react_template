@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 
@@ -8,6 +8,16 @@ import axios from 'axios';
 function App() {
 
   const [profileData, setProfileData] = useState(null);
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    axios({
+      method: 'GET',
+      url: '/time'
+    }).then(res => res.json()).then(data => {
+      setTime(data.time);
+    })
+  }, [])
 
   function getData() {
     axios({
@@ -25,6 +35,7 @@ function App() {
           console.log(error.response.headers)
         }
       })}
+
   return (
     <div className="App">
       <header className="App-header">
@@ -46,6 +57,7 @@ function App() {
               <p>About me: {profileData.about_me}</p>
             </div>
         }
+        <p>It is currently {time}</p>
       </header>
     </div>
   );
