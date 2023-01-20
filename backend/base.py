@@ -2,7 +2,8 @@ from flask import Flask
 
 api = Flask(__name__)
 
-@api.route('/profile')
+## Sample route to access user info
+@api.route('/profile') 
 def my_profile():
     response_body = {
         "name": "Connoooor",
@@ -11,7 +12,7 @@ def my_profile():
 
     return response_body
 
-
+## Uses Pythons time module to pass the current time to the frontend
 @api.route('/time')
 def time():
     return {'time': time.time()}
