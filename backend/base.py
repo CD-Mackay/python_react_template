@@ -12,5 +12,10 @@ def my_profile():
     return response_body
 
 
+@api.route('/time')
+def time():
+    return {'time': time.time()}
+
+
 if __name__ == "__main__":
       api.run(debug=True)
